@@ -7,7 +7,7 @@ except ImportError as e:
 
 
 st.set_page_config(
-    page_title= "Urbaser Sumeet | RCV Report Generator",
+    page_title= "RCV Report Generator",
     page_icon= "logo.png",
     layout= 'wide'
 )
