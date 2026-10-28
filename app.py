@@ -64,7 +64,7 @@ try:
 
         df = pd.merge(df,vm,how='left',on='Vehicle Number')
 
-        less_30 = df[df['count']<=30]
+        less_30 = df[df['count']<=19]
 
         less_30 = less_30[['Kpi Date','Vehicle Number','Vehicle Category' ,'Marching In Out Timings','Zone','Facility','count','Technician']]
 
