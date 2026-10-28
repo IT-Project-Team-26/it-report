@@ -64,13 +64,13 @@ try:
 
         df = pd.merge(df,vm,how='left',on='Vehicle Number')
 
-        less_30 = df[df['count']<=19]
+        less_19 = df[df['count']<=19]
 
-        less_30 = less_30[['Kpi Date','Vehicle Number','Vehicle Category' ,'Marching In Out Timings','Zone','Facility','count','Technician']]
+        less_19 = less_19[['Kpi Date','Vehicle Number','Vehicle Category' ,'Marching In Out Timings','Zone','Facility','count','Technician']]
 
 
         unique_vehicle = (
-            less_30
+            less_19
             .drop_duplicates(subset=['Vehicle Number'])
             .reset_index(drop=True)
         )
@@ -80,7 +80,7 @@ try:
         
         
         
-        #less 30 count Vehicle list
+        #less 19 count Vehicle list
         unique_vehicle.sort_values(by=['Facility','count'],inplace=True)
         unique_vehicle.index = range(1,len(unique_vehicle)+1)
 
@@ -88,7 +88,7 @@ try:
             col1, col2, col3 = st.columns(3)
 
         with st.container(border=True):
-            st.header("RCV Less 30 Bin Count Vehicle List")
+            st.header("RCV Less 19 Bin Count Vehicle List")
             st.metric("Total Vehicles",unique_vehicle['Vehicle Number'].nunique(),width="content",height='content')
             st.markdown("---")
             st.dataframe(
@@ -114,14 +114,14 @@ try:
 
         with col2:
          st.metric(
-        "<=30 Bins lift RCV Vehicles",
+        "<=19 Bins lift RCV Vehicles",
         unique_vehicle['Vehicle Number'].nunique(),
         border=True
         )
       
         with col3:
          st.metric(
-        ">30 bins lift RCV Vehicle in %",
+        ">19 bins lift RCV Vehicle in %",
         f'{compliance}%',border=True,
         )
         with st.container(border=True):
